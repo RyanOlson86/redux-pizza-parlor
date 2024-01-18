@@ -4,14 +4,19 @@ import { useSelector, useDispatch } from "react-redux"
 const Checkout = () => {
     const store = useSelector(store => store)
     const dispatch = useDispatch()
-    const { cart, customerInfo } = store
+    const { cart, customerInfo, total } = store
+
+    let USDollar = new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'USD'
+    })
 
     const handleCheckout = () => {
         console.log('in handle checkout');
         axios.post('/api/order', {
             ...customerInfo,
             pizzas: cart,
-            total: 100 // TODO: get from global store
+            total: total // TODO: get from global store
         }).then(response => {
             dispatch({ type: 'RESET' }) // TODO: a new action type to reset the values of the global store.
         }).catch(error => {
@@ -36,11 +41,14 @@ const Checkout = () => {
                 </thead>
                 <tbody>
                     {cart.map(pizza => {
-                        return pizza ? <tr key={pizza.id}><td>{pizza.name}</td>{pizza.price}</tr> : null
+                        return <tr key={pizza.id}>
+                            <td>{pizza.name}</td>
+                            <td>{pizza.price}</td>
+                        </tr>
                     })}
                 </tbody>
             </table>
-            <h2>Total:</h2> {/*Need to add the total from the global state.*/}
+            <h2>Total: {USDollar.format(total)}</h2>
             <button onClick={handleCheckout}>Checkout</button>
         </>
     )
