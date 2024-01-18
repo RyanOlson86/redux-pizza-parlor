@@ -12,6 +12,9 @@ const cart = (state = [], action) => {
     return state.filter(pizza => pizza.id != action.payload.id)
 
   }
+  if (action.type === 'RESET') {
+    return []
+  }
   return state;
 }
 
@@ -19,13 +22,25 @@ const customerInfo = (state = {}, action) => {
   if (action.type === "ADD_CUSTOMER") {
     return action.payload
   }
+  if (action.type === "RESET") {
+    return {}
+  }
   return state
 }
+
+const total = (state = 0, action) => {
+  if (action.type === "UPDATE_TOTAL") {
+    return action.payload
+  }
+  return state
+}
+
 
 const store = createStore(
   combineReducers({
     cart,
-    customerInfo
+    customerInfo,
+    total
   }),
   applyMiddleware(logger),
 );
