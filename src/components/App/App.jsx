@@ -1,7 +1,9 @@
 import React from 'react';
 import axios from 'axios';
 import Checkout from '../Checkout/Checkout';
+import CustomerInfo from '../CustomerInfo/CustomerInfo';
 import './App.css';
+import PizzaList from '../PizzaList/PizzaList';
 
 function App() {
 
@@ -10,10 +12,16 @@ function App() {
       <header className='App-header'>
         <h1 className='App-title'>Prime Pizza</h1>
       </header>
-  
-      <img src='images/pizza_photo.png' />
-      <p>Pizza is great.</p>
-    <Checkout />
+
+
+      <Checkout />
+
+
+      <CustomerInfo />
+
+      <PizzaList />
+
+
     </div>
   );
 }
