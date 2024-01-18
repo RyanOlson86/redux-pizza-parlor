@@ -36,7 +36,7 @@ const Checkout = () => {
                 </thead>
                 <tbody>
                     {cart.map(pizza => {
-                        return <tr key={pizza.id}><td>{pizza.name}</td>{pizza.price}</tr>
+                        return pizza ? <tr key={pizza.id}><td>{pizza.name}</td>{pizza.price}</tr> : null
                     })}
                 </tbody>
             </table>
