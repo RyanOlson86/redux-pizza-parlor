@@ -19,8 +19,8 @@ const CustomerInfo = () => {
 
     const handleSubmit = (event) => {
         event.preventDefault()
-        dispatch({type: 'ADD CUSTOMER', payload: customer})
-        history.push('/checkout')
+        dispatch({type: 'ADD_CUSTOMER', payload: customer})
+        // history.push('/checkout')
     }
     
     return (
