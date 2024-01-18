@@ -9,7 +9,8 @@ const Checkout = () => {
             <h2>Checkout</h2>
             <p>{customerInfo.customer_name}</p>
             <p>{customerInfo.street_address}</p>
-            <p>{}</p>
+            <p>{customerInfo.city}, {customerInfo.zip}</p>
+
         </>
     )
 }
