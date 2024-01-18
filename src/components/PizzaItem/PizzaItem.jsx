@@ -10,13 +10,14 @@ const PizzaItem = ({pizza}) => {
         if(isClicked === false) {
             dispatch({type: 'ADD_TO_CART', payload: {
                 id: pizza.id,
-                quantity: 1
+                quantity: 1,
+                name: pizza.name,
+                price: pizza.price
             }})
             setIsClicked(true)
         } else {
             dispatch({type: 'REMOVE_FROM_CART', payload: {
-                id: pizza.id,
-                quantity: 1
+                id: pizza.id
             }})
             setIsClicked(false)
         }
