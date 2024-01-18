@@ -1,9 +1,9 @@
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { useState } from "react"
 
 const PizzaItem = ({pizza}) => {
     const [isClicked, setIsClicked] =useState(false)
-    
+    const cartStore = useSelector((store) => store.cart);
     const dispatch = useDispatch()
 
     const handleClick = ()=> {
@@ -17,11 +17,20 @@ const PizzaItem = ({pizza}) => {
             setIsClicked(true)
         } else {
             dispatch({type: 'REMOVE_FROM_CART', payload: {
-                id: pizza.id
+                id: pizza.id,
+                price: pizza.price
             }})
             setIsClicked(false)
         }
     }
+  const calculateTotal = () => {
+    let total = 0;
+    cartStore.forEach((item) => total += Number(item.price));
+    dispatch({
+        type: 'UPDATE_TOTAL',
+        payload: total
+    })
+  }
 
     return (
         <div>

@@ -4,14 +4,13 @@ import Checkout from '../Checkout/Checkout';
 import CustomerInfo from '../CustomerInfo/CustomerInfo';
 import './App.css';
 import PizzaList from '../PizzaList/PizzaList';
+import Header from '../Header/Header';
 
 function App() {
 
   return (
     <div className='App'>
-      <header className='App-header'>
-        <h1 className='App-title'>Prime Pizza</h1>
-      </header>
+      <Header />
       <PizzaList />
       <CustomerInfo />
       <Checkout />
