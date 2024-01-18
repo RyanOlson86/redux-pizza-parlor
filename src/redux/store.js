@@ -8,9 +8,7 @@ const cart = (state = [], action) => {
     return [...state, action.payload]
   }
   if (action.type === "REMOVE_FROM_CART") {
-
     return state.filter(pizza => pizza.id != action.payload.id)
-
   }
   if (action.type === 'RESET') {
     return []
@@ -29,8 +27,11 @@ const customerInfo = (state = {}, action) => {
 }
 
 const total = (state = 0, action) => {
-  if (action.type === "UPDATE_TOTAL") {
-    return action.payload
+  if (action.type === "ADD_TO_CART") {
+    return state + Number(action.payload.price)
+  }
+  if (action.type === "REMOVE_FROM_CART") {
+    return state - Number(action.payload.price)
   }
   return state
 }
