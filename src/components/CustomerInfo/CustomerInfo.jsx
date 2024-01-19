@@ -1,7 +1,8 @@
 import { useState } from "react"
 import { useDispatch } from "react-redux"
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min"
-import { Box, TextField, FormControlLabel, RadioGroup, Radio, FormControl, InputLabel, Input } from "@mui/material"
+import { Box, TextField, FormControlLabel, RadioGroup, Radio, FormControl, InputLabel, Button} from "@mui/material"
+import SendIcon from '@mui/icons-material/Send';
 
 
 const CustomerInfo = () => {
@@ -55,7 +56,15 @@ const CustomerInfo = () => {
                         </RadioGroup>
                     </FormControl>
                 </div>
-                <button>Continue to Checkout</button>
+                <Button variant="contained" endIcon={<SendIcon />} sx={{
+                    backgroundColor: '#009c15',
+                    left: '40%',
+                    bottom: '5%',
+                    width: '240px',
+                    height: '60px',
+                    fontSize: '24px'
+                    }} type="submit">Next</Button>
+                {/* <button>Continue to Checkout</button> */}
             </Box >
         </>
     )
