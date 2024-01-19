@@ -1,15 +1,19 @@
+/* * {
+  border: 1px solid black;
+} */
+
 .App {
   text-align: center;
 }
 
 .App-header {
   background-color: #222;
-  height: 70px;
   padding: 20px;
   color: white;
   margin-bottom: 20px;
 }
 
-.App-title {
-  font-size: 2em;
+h2:hover {
+  cursor: pointer;
 }
+
