@@ -45,15 +45,7 @@ const PizzaItem = ({ pizza }) => {
   };
 
   return (
-    // <Card sx={{maxWidth: 400}}>
-    //     <div>{pizza.name}</div>
-    //     <div>Description: {pizza.description}</div>
-    //     <div>${pizza.price}</div>
-    //     <CardActions>
-    //        <button onClick={handleClick}>{isClicked ? 'Remove' : 'Add'}</button>
-    //     </CardActions>
 
-    // </Card>
     <div style={{ margin: "10px" }}>
       <Card sx={{ width: 400 , height: 350, display: 'flex', flexDirection: 'column', justifyContent:'space-between' }}>
         <CardContent>
