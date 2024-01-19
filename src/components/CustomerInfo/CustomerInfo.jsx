@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { useDispatch } from "react-redux"
-import { useHistory } from "react-router-dom/cjs/react-router-dom.min"
+import { useHistory, Link } from "react-router-dom/cjs/react-router-dom.min"
+
 
 const CustomerInfo = () => {
     const history = useHistory()
@@ -27,7 +28,7 @@ const CustomerInfo = () => {
             zip: '',
             type: 'Delivery'
         })
-        // history.push('/checkout')
+        history.push('/checkout')
     }
 
     return (
@@ -47,6 +48,7 @@ const CustomerInfo = () => {
                 <input type="radio" value='Delivery' id="Delivery" onChange={(event) => setCustomer({ ...customer, type: event.target.value })} checked={customer.type === 'Delivery'} />
                 <label htmlFor="Delivery">Delivery</label>
                 <button>Continue to Checkout</button>
+                
             </form>
         </>
     )

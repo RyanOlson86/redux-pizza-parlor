@@ -1,10 +1,12 @@
 import axios from "axios"
 import { useSelector, useDispatch } from "react-redux"
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min"
 
 const Checkout = () => {
     const store = useSelector(store => store)
     const dispatch = useDispatch()
     const { cart, customerInfo, total } = store
+    const history = useHistory()
 
     let USDollar = new Intl.NumberFormat('en-US', {
         style: 'currency',
@@ -12,13 +14,14 @@ const Checkout = () => {
     })
 
     const handleCheckout = () => {
-        console.log('in handle checkout');
+        console.log('in handle checkout', customerInfo);
         axios.post('/api/order', {
             ...customerInfo,
             pizzas: cart,
             total: total // TODO: get from global store
         }).then(response => {
             dispatch({ type: 'RESET' }) // TODO: a new action type to reset the values of the global store.
+            history.push('/')
         }).catch(error => {
             console.log(error);
             alert('Unable to process order.')
