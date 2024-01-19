@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { useDispatch } from "react-redux"
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min"
+import { Box, TextField, FormControlLabel, RadioGroup, Radio, FormControl, InputLabel, Input } from "@mui/material"
 
 
 const CustomerInfo = () => {
@@ -37,24 +38,25 @@ const CustomerInfo = () => {
 
     return (
         <>
-            <form onSubmit={handleSubmit}>
-                <label htmlFor="nameInput">Name</label>
-                {/* <input required type="text" placeholder="Enter Name" id="nameInput" onChange={(event) => setCustomer({ ...customer, customer_name: event.target.value })} value={customer.customer_name} /> */}
-                <input required type="text" placeholder="Enter Name" id="nameInput" onChange={(event) => handleSetting('customer_name', event.target.value)} value={customer.customer_name} />
-                <label htmlFor="streetInput">Street Address</label>
-                <input required type="text" placeholder="Enter St. Address" id="streetInput" onChange={(event) => handleSetting('street_address', event.target.value)} value={customer.street_address} />
-                <label htmlFor="cityInput">City</label>
-                <input required type="text" placeholder="Enter City" id="cityInput" onChange={(event) => handleSetting('city', event.target.value)} value={customer.city} />
-                <label htmlFor="zipInput">Zip</label>
-                <input required type="number" placeholder="Enter Zip Code" id="zipInput" onChange={(event) => handleSetting('zip', event.target.value)} value={customer.zip} />
-
-                <input type="radio" id="Pickup" onChange={(event) => handleSetting('type', event.target.value)} value='Pickup' checked={customer.type === 'Pickup'} />
-                <label htmlFor="Pickup">Pickup</label>
-                <input type="radio" value='Delivery' id="Delivery" onChange={(event) => handleSetting('type', event.target.value)} checked={customer.type === 'Delivery'} />
-                <label htmlFor="Delivery">Delivery</label>
+            <Box component='form' onSubmit={handleSubmit}>
+                <InputLabel htmlFor="nameInput" sx={{ m: 1 }}>Name</InputLabel>
+                <TextField required id="nameInput" label="Enter Name" variant="outlined" onChange={(event) => handleSetting('customer_name', event.target.value)} value={customer.customer_name} />
+                <InputLabel htmlFor="streetInput" sx={{ m: 1 }}>Street Address</InputLabel>
+                <TextField required id="streetInput" label="Enter St. Address" variant="outlined" onChange={(event) => handleSetting('street_address', event.target.value)} value={customer.street_address} />
+                <InputLabel htmlFor="cityInput" sx={{ m: 1 }}>City</InputLabel>
+                <TextField required id="cityInput" label="Enter City" variant="outlined" onChange={(event) => handleSetting('city', event.target.value)} value={customer.city} />
+                <InputLabel htmlFor="zipInput" sx={{ m: 1 }}>Zip Code</InputLabel>
+                <TextField required id="zipInput" label="Enter Zip Code" variant="outlined" onChange={(event) => handleSetting('zip', event.target.value)} value={customer.zip} />
+                <div>
+                    <FormControl>
+                        <RadioGroup>
+                            <FormControlLabel control={<Radio />} label="Pickup" onChange={(event) => handleSetting('type', event.target.value)} value='Pickup' checked={customer.type === 'Pickup'}></FormControlLabel>
+                            <FormControlLabel control={<Radio />} label="Delivery" onChange={(event) => handleSetting('type', event.target.value)} checked={customer.type === 'Delivery'} value='Delivery'></FormControlLabel>
+                        </RadioGroup>
+                    </FormControl>
+                </div>
                 <button>Continue to Checkout</button>
-                
-            </form>
+            </Box >
         </>
     )
 }
