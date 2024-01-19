@@ -1,6 +1,7 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
 import PizzaItem from "../PizzaItem/PizzaItem"
+import { Link } from "react-router-dom/cjs/react-router-dom.min"
 
 const PizzaList = () => {
     const [pizzaList, setPizzaList] = useState([])
@@ -27,7 +28,11 @@ const PizzaList = () => {
             {pizzaList.map((pizza)=>(
                 <PizzaItem pizza={pizza} key={pizza.id}/>
             ))}
-            <button>NEXT</button>
+            
+            <Link to='/info'>
+                <button>Next</button>
+            </Link>
+            
         </>
     )
 }

@@ -33,6 +33,9 @@ const total = (state = 0, action) => {
   if (action.type === "REMOVE_FROM_CART") {
     return state - Number(action.payload.price)
   }
+  if (action.type === "RESET") {
+    return 0
+  }
   return state
 }
 
